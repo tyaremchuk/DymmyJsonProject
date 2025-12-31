@@ -1,4 +1,4 @@
-package tests.users;
+package api.tests.users;
 
 public class UserTests {
 }
