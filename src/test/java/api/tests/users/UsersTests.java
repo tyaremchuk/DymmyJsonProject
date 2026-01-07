@@ -27,5 +27,6 @@ public class UsersTests
         response.then().log().all();
 
         assertThat(response.getStatusCode(),equalTo(200));
+        //comment
     }
 }
