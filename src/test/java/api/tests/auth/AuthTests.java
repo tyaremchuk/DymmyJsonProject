@@ -49,7 +49,7 @@ public class AuthTests
     }
 
     @Test(priority = 4)
-    public void refreshTokeTest(ITestContext context)
+    public void refreshTokenTest(ITestContext context)
     {
         String authToken = context.getAttribute("authToken").toString();
         RefreshToken refreshToken = new RefreshToken(authToken);
@@ -58,5 +58,15 @@ public class AuthTests
         response.then().log().all();
 
         assertThat(response.getStatusCode(),equalTo(200));
+    }
+
+    @Test(priority = 5)
+    public void refreshTokenTestFail(ITestContext context)
+    {
+        RefreshToken refreshToken = new RefreshToken(context.getAttribute("authToken").toString()+1);
+
+        Response response = AuthEndpoints.refreshToken(refreshToken);
+        response.then().log().all();
+        assertThat(response.getStatusCode(),equalTo(500));
     }
 }
