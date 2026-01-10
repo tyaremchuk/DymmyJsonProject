@@ -1,5 +1,4 @@
 package api.endpoints;
-
 import api.payloads.RefreshToken;
 import api.payloads.UserLogin;
 import io.restassured.http.ContentType;
@@ -8,6 +7,7 @@ import java.util.ResourceBundle;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.*;
+
 public class AuthEndpoints
 {
     static ResourceBundle getUrl()

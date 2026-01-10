@@ -1,12 +1,10 @@
 package api.tests.auth;
-
 import api.endpoints.AuthEndpoints;
 import api.payloads.RefreshToken;
 import api.payloads.UserLogin;
 import io.restassured.response.Response;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -39,7 +37,7 @@ public class AuthTests
     }
 
     @Test(priority = 3)
-    public void getAuthMeTestFail(ITestContext context)
+    public void getAuthMeTest500(ITestContext context)
     {
         String authToken = context.getAttribute("authToken").toString()+1;
 
@@ -61,7 +59,7 @@ public class AuthTests
     }
 
     @Test(priority = 5)
-    public void refreshTokenTestFail(ITestContext context)
+    public void refreshTokenTest500(ITestContext context)
     {
         RefreshToken refreshToken = new RefreshToken(context.getAttribute("authToken").toString()+1);
 

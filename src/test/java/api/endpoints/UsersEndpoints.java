@@ -1,14 +1,12 @@
 package api.endpoints;
-
 import api.payloads.UsersPayloads;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import java.util.ResourceBundle;
-
 import static io.restassured.RestAssured.*;
 
-public class UsersEndpoitns
+public class UsersEndpoints
 {
     static ResourceBundle getUrl()
     {
@@ -35,7 +33,17 @@ public class UsersEndpoitns
                         .contentType(ContentType.JSON)
                         .when()
                         .body(userData)
-                        .post(getUrl().getString("loginUser_url"));
+                        .post(getUrl().getString("userLogin_url"));
+        return response;
+    }
+
+    public static Response getCurrentAuthenticatedUser(String token)
+    {
+        Response response =
+                given()
+                        .header("Authorization","Bearer "+token)
+                        .when()
+                        .get(getUrl().getString("currentAuthUser_url"));
         return response;
     }
 }
