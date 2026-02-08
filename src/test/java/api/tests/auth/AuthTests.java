@@ -4,12 +4,16 @@ import api.payloads.RefreshToken;
 import api.payloads.UserLogin;
 import io.restassured.response.Response;
 import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 public class AuthTests
 {
+    @BeforeClass
+
+
     @Test(priority = 1)
     public void loginUserTest(ITestContext context)
     {

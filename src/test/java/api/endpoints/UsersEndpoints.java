@@ -41,9 +41,61 @@ public class UsersEndpoints
     {
         Response response =
                 given()
-                        .header("Authorization","Bearer "+token)
+                        .cookie("accessToken",token)
                         .when()
                         .get(getUrl().getString("currentAuthUser_url"));
+        return response;
+    }
+
+    public static Response getSingleUser(int id)
+    {
+        Response response =
+                given()
+                        .when()
+                        .get(getUrl().getString("getSingleUser_url")+id);
+        return response;
+    }
+
+    public static Response searchUsers(String searchKey)
+    {
+        Response response =
+                given()
+                        .queryParam("q",searchKey)
+                        .when()
+                        .get(getUrl().getString("searchUsers_url"));
+        return response;
+    }
+
+    public static Response filterUsers(String key, String value)
+    {
+        Response response =
+                given()
+                        .queryParam("key",key)
+                        .queryParam("value",value)
+                        .when()
+                        .get(getUrl().getString("filterUsers_url"));
+        return response;
+    }
+
+    public static Response limitAndSkipUsers(int limit, int skip, String select)
+    {
+        Response response =
+                given()
+                        .queryParam("limit",limit)
+                        .queryParam("skip",skip)
+                        .queryParam("select",select)
+                        .when()
+                        .get(getUrl().getString("limitAndSkipUsers_url"));
+        return response;
+    }
+
+    public static Response sortUsers(String sortBy, String orderBy)
+    {
+        Response response = given()
+                .queryParam("sortBy",sortBy)
+                .queryParam("orderBy",orderBy)
+                .when()
+                .get(getUrl().getString("sortUsers_url"));
         return response;
     }
 }
