@@ -98,4 +98,13 @@ public class UsersEndpoints
                 .get(getUrl().getString("sortUsers_url"));
         return response;
     }
+
+    public static Response getAllTags()
+    {
+        Response response =
+                given()
+                        .when()
+                        .get(getUrl().getString("getAllTags_url"));
+        return response;
+    }
 }

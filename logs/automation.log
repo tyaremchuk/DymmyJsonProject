@@ -157,3 +157,15 @@ logs to ignore14:50:19.032 [main] INFO  org.testng.internal.Utils - [TestNG] Run
 11:08:33.721 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
   /Users/taras/Library/Caches/JetBrains/IntelliJIdea2025.3/temp-testng-customsuite.xml
 
+14:57:05.685 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  /Users/taras/Library/Caches/JetBrains/IntelliJIdea2025.3/temp-testng-customsuite.xml
+
+14:58:37.676 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  /Users/taras/Library/Caches/JetBrains/IntelliJIdea2025.3/temp-testng-customsuite.xml
+
+20:23:19.357 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  /Users/taras/Library/Caches/JetBrains/IntelliJIdea2025.3/temp-testng-customsuite.xml
+
+18:16:43.727 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  /Users/taras/Library/Caches/JetBrains/IntelliJIdea2025.3/temp-testng-customsuite.xml
+

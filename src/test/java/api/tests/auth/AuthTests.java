@@ -1,7 +1,9 @@
 package api.tests.auth;
 import api.endpoints.AuthEndpoints;
+import api.endpoints.UsersEndpoints;
 import api.payloads.RefreshToken;
 import api.payloads.UserLogin;
+import api.payloads.UsersPayloads;
 import io.restassured.response.Response;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
@@ -11,8 +13,17 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class AuthTests
 {
+    private String authToken;
     @BeforeClass
+    public void loginUser()
+    {
+        UsersPayloads userData = new UsersPayloads("emilys","emilyspass");
+        Response response = UsersEndpoints.loginUser(userData);
+        response.then().log().all();
+        assertThat(response.getStatusCode(),equalTo(200));
 
+        authToken = response.jsonPath().getString("accessToken");
+    }
 
     @Test(priority = 1)
     public void loginUserTest(ITestContext context)
@@ -50,6 +61,14 @@ public class AuthTests
         assertThat(response.getStatusCode(),equalTo(500));
     }
 
+    @Test()
+    public void getAuthTest500v2()
+    {
+        Response response = AuthEndpoints.getAuthMe(authToken+1);
+        response.then().log().all();
+        assertThat(response.getStatusCode(),equalTo(500));
+    }
+
     @Test(priority = 4)
     public void refreshTokenTest(ITestContext context)
     {
@@ -70,5 +89,13 @@ public class AuthTests
         Response response = AuthEndpoints.refreshToken(refreshToken);
         response.then().log().all();
         assertThat(response.getStatusCode(),equalTo(500));
+    }
+
+    @Test
+    public void getAllTags200()
+    {
+        Response response = UsersEndpoints.getAllTags();
+        assertThat(response.getStatusCode(),equalTo(200));
+        response.then().log().all();
     }
 }
